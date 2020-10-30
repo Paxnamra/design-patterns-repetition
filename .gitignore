@@ -1,0 +1,13 @@
+# Default ignored files
+/shelf/
+.idea/
+
+# IntelliJ
+out/
+
+# Datasource local storage ignored files
+/../../../../:\CODE\design-patterns-review\.idea/dataSources/
+/dataSources.local.xml
+
+
+
