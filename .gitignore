@@ -9,5 +9,8 @@ out/
 /../../../../:\CODE\design-patterns-review\.idea/dataSources/
 /dataSources.local.xml
 
+# working tree classes
+/target
+
 
 
