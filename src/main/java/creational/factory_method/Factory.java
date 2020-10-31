@@ -1,11 +1,22 @@
 package creational.factory_method;
 
 public class Factory {
-    public void create(String objectType) {
-        createObject(objectType);
+    private static Factory factory;
+
+    private Factory() {}
+
+    public static Factory getFactory() {
+        if (factory == null) {
+            factory = new Factory();
+        }
+        return factory;
     }
 
-    private void createObject(String objectType) {
+    public ObjectData create(String objectType) {
+        return createObject(objectType);
+    }
+
+    private ObjectData createObject(String objectType) {
 
         switch (objectType) {
             case "":
@@ -20,6 +31,7 @@ public class Factory {
             default:
                 break;
         }
+        return null;
     }
 }
 
