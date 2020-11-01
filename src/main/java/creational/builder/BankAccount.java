@@ -7,8 +7,6 @@ public class BankAccount {
     private String owner;
     private BigDecimal balance;
     private BigDecimal interestRate;
-
-    private BankAccount() {}
     
     public long getBankAccount() {
         return bankAccount;
@@ -40,14 +38,9 @@ public class BankAccount {
         private BigDecimal balance;
         private BigDecimal interestRate;
 
-        public Builder withAccountNumber(long bankAccount) {
+        public Builder(long bankAccount, String owner) {
             this.bankAccount = bankAccount;
-            return this;
-        }
-
-        public Builder withOwner(String owner) {
             this.owner = owner;
-            return this;
         }
 
         public Builder openingBalnce(BigDecimal balance) {
@@ -61,13 +54,14 @@ public class BankAccount {
         }
 
         public BankAccount build() {
-            BankAccount account = new BankAccount();
-            account.bankAccount = this.bankAccount;
-            account.owner = this.owner;
-            account.balance = this.balance;
-            account.interestRate = this.interestRate;
-
-            return account;
+            return new BankAccount(this);
         }
+    }
+
+    private BankAccount(Builder builder) {
+        bankAccount = builder.bankAccount;
+        owner = builder.owner;
+        balance = builder.balance;
+        interestRate = builder.interestRate;
     }
 }

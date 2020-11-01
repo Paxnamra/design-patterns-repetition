@@ -4,16 +4,12 @@ import java.math.BigDecimal;
 
 public class Client {
     public static void main(String[] args) {
-        BankAccount doggoAccount = new BankAccount.Builder()
-                .withAccountNumber(1111)
-                .withOwner("Doggo")
+        BankAccount doggoAccount = new BankAccount.Builder(1111, "Doggo")
                 .openingBalnce(new BigDecimal("1200.50"))
                 .atRate(new BigDecimal("4.1"))
                 .build();
 
-        BankAccount birbAccount = new BankAccount.Builder()
-                .withOwner("Birb")
-                .withAccountNumber(223233)
+        BankAccount birbAccount = new BankAccount.Builder(223233, "Birb")
                 .atRate(new BigDecimal("4.0"))
                 .openingBalnce(new BigDecimal("2010.50"))
                 .build();
