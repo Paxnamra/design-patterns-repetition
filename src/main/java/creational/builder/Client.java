@@ -14,7 +14,10 @@ public class Client {
                 .openingBalnce(new BigDecimal("2010.50"))
                 .build();
 
+        BankAccount noAnimal = new BankAccount.Builder(677676, "Ghost").build();
+
         System.out.println(doggoAccount);
         System.out.println(birbAccount);
+        System.out.println(noAnimal);
     }
 }
