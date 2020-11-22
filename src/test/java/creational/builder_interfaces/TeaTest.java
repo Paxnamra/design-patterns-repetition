@@ -1,6 +1,7 @@
 package creational.builder_interfaces;
 
 import creational.builder_interfaces.models.*;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InOrder;
 import org.mockito.InjectMocks;
@@ -11,12 +12,25 @@ import static org.mockito.Mockito.*;
 
 class TeaTest {
 
-    private final Tea teaObject = Tea.builder()
-            .withMugFirst(new Mug())
-            .withLiquid(new Water())
-            .thenWithTeaPouch(new Herbs())
-            .lastStep()
-            .makeTea();
+    private Tea teaObject;
+    private Tea detailedTeaObject;
+
+    @BeforeEach
+    void setUp() {
+        teaObject = Tea.builder()
+                .withMugFirst(new Mug())
+                .withLiquid(new Water())
+                .thenWithTeaPouch(new Herbs())
+                .lastStep()
+                .makeTea();
+
+        detailedTeaObject = Tea.builder()
+                .withMugFirst(new Glass("pink"))
+                .withTeaPouch(new TeaPouch("herbs"))
+                .thenWithLiquid(new Water())
+                .lastStep()
+                .makeTea();
+    }
 
     @Mock IContainer mugMock;
     @Mock ILiquid waterMock;
@@ -27,6 +41,12 @@ class TeaTest {
     void shouldTeaBuilderCreateTeaObject() {
         when(teaBuilder.makeTea()).thenReturn(teaObject);
         assertEquals(teaObject, teaBuilder.makeTea());
+    }
+
+    @Test
+    void shouldTeaBuilderCreateDetailedTeaObject() {
+        when(teaBuilder.makeTea()).thenReturn(detailedTeaObject);
+        assertEquals(detailedTeaObject, teaBuilder.makeTea());
     }
 
     @Test
