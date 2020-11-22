@@ -1,6 +1,7 @@
 package creational.builder_interfaces;
 
 import creational.builder_interfaces.models.*;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InOrder;
@@ -38,7 +39,7 @@ class TeaTest {
     @InjectMocks Tea.TeaBuilder teaBuilder = mock(Tea.TeaBuilder.class);
 
     @Test
-    void shouldTeaBuilderCreateTeaObject() {
+    void shouldTeaBuilderCreateTeaObjects() {
         when(teaBuilder.makeTea()).thenReturn(teaObject);
         assertEquals(teaObject, teaBuilder.makeTea());
     }
@@ -46,6 +47,8 @@ class TeaTest {
     @Test
     void shouldTeaBuilderCreateDetailedTeaObject() {
         when(teaBuilder.makeTea()).thenReturn(detailedTeaObject);
+        assertEquals(detailedTeaObject.getMug().toString(), "Glass{colour='pink'}");
+        assertEquals(detailedTeaObject.getTeabag().toString(), "TeaPouch{pouchType='herbs'}");
         assertEquals(detailedTeaObject, teaBuilder.makeTea());
     }
 
